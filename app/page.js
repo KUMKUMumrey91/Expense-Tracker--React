@@ -98,8 +98,8 @@ const page = () => {
         </div> 
         {rendertask}
 
-        <h2>Total Spent: {expense.reduce((ac, cv)=>ac + +cv.amount,0)}{""}</h2>
-        
+        <h2 className='mt-5 text-xl'><b>Total Spent</b>: {Maintask.reduce((ac, cv)=>ac + +cv.amount,0)}{""}</h2>
+
       </div>
 
     </>
