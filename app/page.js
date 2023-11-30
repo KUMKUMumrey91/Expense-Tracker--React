@@ -26,7 +26,6 @@ const page = () => {
 
   }
 
-
   let rendertask = <h2>No entry done </h2>
 
   if (Maintask.length > 0) {
@@ -68,7 +67,6 @@ const page = () => {
         EXPENSE <select className='text-2xl w-2/5 border-zinc-900 border-2 rounded m-4 px-3 py-1'
           value={expense}
           onChange={(e) => { setexpense(e.target.value) }}>
-          <option value=""></option>
           <option value="groceries">groceries</option>
           <option value="entertainment">entertainment</option>
           <option value="utilities">utilities</option>
@@ -99,6 +97,9 @@ const page = () => {
           <h3 className='w-1/6 md:text-xl'>AMOUNT</h3>
         </div> 
         {rendertask}
+
+        <h2>Total Spent: {expense.reduce((ac, cv)=>ac + +cv.amount,0)}{""}</h2>
+        
       </div>
 
     </>
