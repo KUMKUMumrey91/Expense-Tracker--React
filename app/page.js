@@ -35,18 +35,18 @@ const page = () => {
     rendertask = Maintask.map((t, i) => {
       return (
         <li key={i} className='flex justify-between mb-4'>
-          <div className='px-1 flex items-center justify-between mb-2 w-3/4'>
-            <h3 className='text-xs font-sans w-1/6 md:text-xl'>{t.date}</h3>
-            <h3 className='text-xs font-sans w-1/3 md:text-xl'>{t.expense}</h3>
-            <h3 className='text-xs font-sans w-1/3 md:text-xl'>{t.desc}</h3>
-            <h3 className='text-xs font-sans w-1/5 md:text-xl'>{t.amount}</h3>
+          <div className='px-1 flex items-center justify-between mb-2 w-4/5'>
+            <h3 className='text-xs font-sans text-center w-1/6 md:text-xl'>{t.date}</h3>
+            <h3 className='text-xs font-sans text-center w-1/3 md:text-xl'>{t.expense}</h3>
+            <h3 className='text-xs font-sans text-center w-1/3 md:text-xl'>{t.desc}</h3>
+            <h3 className='text-xs font-sans text-center w-1/5 md:text-xl'>{t.amount}</h3>
           </div>
           <div className='px-4 flex items-center justify-evenly mb-2 w-1/6 '>
-            
+
             <button onClick={() => {
               deleteHandler(i)
             }}
-              className='bg-red-400 text-xs px-2 py-1 rounded text-white'>delete</button>
+              className='bg-red-400 text-xs px-2 py-1 rounded text-white md:text-2xl md:px-4 md:py-1'>delete</button>
 
           </div>
         </li>
@@ -90,12 +90,12 @@ const page = () => {
 
       <hr />
 
-      <div className='bg-slate-200 md:p-5 '>
-        <div className='flex justify-between w-3/4 mb-4 pl-1 text-xs font-bold'>
-          <h3 className=' w-1/6 md:text-xl'>DATE</h3>
-          <h3 className=' w-1/3 md:text-xl'>EXPENSE</h3>
-          <h3 className=' w-1/3 md:text-xl'>DESCRIPTION</h3>
-          <h3 className=' w-1/5 md:text-xl'>AMOUNT</h3>
+      <div className='bg-slate-200 md:p-4 '>
+        <div className='flex justify-between w-4/5 mb-4 pl-1 text-xs font-bold'>
+          <h3 className=' w-1/6 text-center md:text-xl'>DATE</h3>
+          <h3 className=' w-1/3 text-center md:text-xl'>EXPENSE</h3>
+          <h3 className=' w-1/3 text-center md:text-xl'>DESCRIPTION</h3>
+          <h3 className=' w-1/5 text-center md:text-xl'>AMOUNT</h3>
         </div>
         {rendertask}
 
