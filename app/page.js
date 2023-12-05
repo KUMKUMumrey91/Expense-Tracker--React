@@ -1,5 +1,4 @@
 "use client"
-
 import React, { useState } from 'react'
 
 const page = () => {
@@ -8,6 +7,8 @@ const page = () => {
   const [desc, setdesc] = useState("");
   const [amount, setamount] = useState("");
   const [Maintask, setMaintask] = useState([])
+  // const [Maintask, setMaintask] = useState(JSON.parse(localStorage.getItem("Maintask"))|| []
+  //       );
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -17,6 +18,7 @@ const page = () => {
     setexpense("")
     setdesc("")
     setamount("")
+    // localStorage.setItem("Maintask",JSON.stringify(setMaintask));
   }
 
   const deleteHandler = (i) => {
@@ -33,19 +35,18 @@ const page = () => {
     rendertask = Maintask.map((t, i) => {
       return (
         <li key={i} className='flex justify-between mb-4'>
-          <div className='px-4 flex items-center justify-between mb-2 w-3/4'>
-            <h3 className='text-xl font-sans w-1/6'>{t.date}</h3>
-            <h3 className='text-2xl font-sans w-1/6'>{t.expense}</h3>
-            <h3 className='text-xl font-sans w-1/3'>{t.desc}</h3>
-            <h3 className='text-2xl font-sans w-1/6'>{t.amount}</h3>
+          <div className='px-1 flex items-center justify-between mb-2 w-3/4'>
+            <h3 className='text-xs font-sans w-1/6 md:text-xl'>{t.date}</h3>
+            <h3 className='text-xs font-sans w-1/3 md:text-xl'>{t.expense}</h3>
+            <h3 className='text-xs font-sans w-1/3 md:text-xl'>{t.desc}</h3>
+            <h3 className='text-xs font-sans w-1/5 md:text-xl'>{t.amount}</h3>
           </div>
           <div className='px-4 flex items-center justify-evenly mb-2 w-1/6 '>
-            <button
-              className='bg-blue-400 px-3 py-2 rounded text-white'>edit</button>
+            
             <button onClick={() => {
               deleteHandler(i)
             }}
-              className='bg-red-400 px-3 py-2 rounded text-white'>delete</button>
+              className='bg-red-400 text-xs px-2 py-1 rounded text-white'>delete</button>
 
           </div>
         </li>
@@ -56,15 +57,15 @@ const page = () => {
 
   return (
     <>
-      <h1 className='bg-black text-white text-center text-5xl font-bold m-1 p-4 '>EXPENSE TRACKER</h1>
+      <h1 className='bg-black text-white text-center text-2xl md:text-5xl font-bold m-1 p-4 '>EXPENSE TRACKER</h1>
       <form onSubmit={submitHandler} className='text-center'>
-        DATE <input type="date" placeholder='enter date' className='text-2xl w-2/5 border-zinc-900 border-2 rounded m-4 px-3 py-1'
+        DATE <input type="date" placeholder='enter date' className='text-xs md:text-2xl w-2/5 border-zinc-900 border-2 rounded m-4 px-3 py-1'
           value={date}
           onChange={(e) => {
             setdate(e.target.value)
           }} /> <br />
 
-        EXPENSE <select className='text-2xl w-2/5 border-zinc-900 border-2 rounded m-4 px-3 py-1'
+      EXPENSES <select className='text-xs md:text-2xl w-2/5 border-zinc-900 border-2 rounded m-4 px-3 py-1'
           value={expense}
           onChange={(e) => { setexpense(e.target.value) }}>
           <option value="groceries">groceries</option>
@@ -73,32 +74,32 @@ const page = () => {
           <option value="others">others</option>
         </select><br />
 
-        DESCRIPTION <input type="text" placeholder='enter desc' className='text-2xl border-zinc-900 border-2 rounded m-4 px-3 py-1 w-2/5'
+        DESCRIPTION <input type="text" placeholder='enter desc' className='text-xs md:text-2xl border-zinc-900 border-2 rounded m-4 px-3 py-1 w-2/5'
           value={desc}
           onChange={(e) => {
             setdesc(e.target.value)
           }} /> <br />
-        AMOUNT <input type="text" placeholder='enter amount' className='text-2xl border-zinc-900 border-2 rounded m-4 px-3 py-1 w-2/5'
+        AMOUNT <input type="text" placeholder='enter amount' className='text-xs md:text-2xl border-zinc-900 border-2 rounded m-4 px-3 py-1 w-2/5'
           value={amount}
           onChange={(e) => {
             setamount(e.target.value)
-          }} /> <br />
+          }} /> <br /> 
         <button className='bg-black text-white text-2xl px-6 py-1 mx-3 mb-5 rounded'>ADD</button>
 
       </form>
 
       <hr />
 
-      <div className='bg-slate-200 p-3 md:p-5 '>
-        <div className='flex justify-between w-3/4 mb-4 pl-4 text-xs font-bold'>
-          <h3 className='w-1/6 md:text-xl'>DATE</h3>
-          <h3 className='w-1/6 md:text-xl'>EXPENSE</h3>
-          <h3 className='w-1/3 md:text-xl'>DESCRIPTION</h3>
-          <h3 className='w-1/6 md:text-xl'>AMOUNT</h3>
-        </div> 
+      <div className='bg-slate-200 md:p-5 '>
+        <div className='flex justify-between w-3/4 mb-4 pl-1 text-xs font-bold'>
+          <h3 className=' w-1/6 md:text-xl'>DATE</h3>
+          <h3 className=' w-1/3 md:text-xl'>EXPENSE</h3>
+          <h3 className=' w-1/3 md:text-xl'>DESCRIPTION</h3>
+          <h3 className=' w-1/5 md:text-xl'>AMOUNT</h3>
+        </div>
         {rendertask}
 
-        <h2 className='mt-5 text-xl'><b>Total Spent</b>: {Maintask.reduce((ac, cv)=>ac + +cv.amount,0)}{""}</h2>
+        <h2 className='mt-5 text-xs md:text-xl'><b>Total Spent</b>: {Maintask.reduce((ac, cv) => ac + +cv.amount, 0)}{""}</h2>
 
       </div>
 
